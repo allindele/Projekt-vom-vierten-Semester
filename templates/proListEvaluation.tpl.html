@@ -1,0 +1,106 @@
+<h2>
+    Auswertung über die Projekte
+</h2>
+
+<div class="evaluation-container">
+    <% for (var key in context) { %>
+        <div id="projekt_<% key %>" class="project-container">
+            <div id="project_meta_<% key %>" class="metadata">
+                <p>
+                    <label>Projektnummer: </label><% context[key]['nummer'] %>
+                </p>
+                <p>
+                    <label>Projektbezeichnung: </label><% context[key]['bezeichnung'] %>
+                </p>
+                <p>
+                    <label>Projektbeschreibung: </label><% context[key]['beschreibung'] %>
+                </p>
+            </div>
+            <div>
+                <h3>Projektkomponenten</h3>
+                <% for (var compKey in context[key]['components']) { %>
+                    <% var currentComponent = context[key]['components'][compKey]; %>
+                    <div id="componet_<% compKey %>" class="component-container">
+                        <div id="componet_meta_<% compKey %>" class="metadata">
+                            <p>
+                                <label>Komponentenbezeichnung: </label><% currentComponent['bezeichnung'] %>
+                            </p>
+                        </div>
+                        <div id="component_errors_<% compKey %>" class="errors-table">
+                            <div>
+                                <h4>bekannte Fehler</h4>
+                                <table>
+                                    <tr>
+                                        <th>Beschreibung</th>
+                                        <th>Erstellt am</th>
+                                        <th>Erstellt von</th>
+                                        <th>Fehlerkategorien</th>
+                                        <th>Fehlerstatus</th>
+                                    </tr>
+                                    <% for (var errId in currentComponent['availableErrors']) { %>
+                                        <% var curr = currentComponent['availableErrors'][errId]; %>
+                                        <% if (curr['fehlerstatus'] == "erkannt" || curr['fehlerstatus'] == "zugewiesen") { %>
+                                            <tr>
+                                                <td><% curr['fehlerbeschreibung'] %></td>
+                                                <td><% curr['erstelltAm'] %></td>
+                                                <td><% curr['erstelltVon'] %></td>
+                                                <td>
+                                                    <% for (catId in curr['fehlerkategorienIds_o']) { %>
+                                                        <% var current = curr['fehlerkategorienIds_o'][catId]; %>
+                                                        <% current['katBezeichnung'] %>
+                                                    <% } %>
+                                                </td>
+                                                <td><% curr['fehlerstatus'] %></td>
+                                            </tr>
+                                        <% } %>
+                                    <% } %>
+                                </table>
+                            </div>
+                            <div>
+                                <h4>beseitigte Fehler</h4>
+                                <table>
+                                    <tr>
+                                        <th>Beschreibung</th>
+                                        <th>Erstellt am</th>
+                                        <th>Erstellt von</th>
+                                        <th>Fehlerkategorien</th>
+                                        <th>Lösungsbeschreibung</th>
+                                        <th>Gelöst von</th>
+                                        <th>Gelöst am</th>
+                                        <th>Fehlerursache</th>
+                                        <th>Fehlerursachenkategorie</th>
+                                        <th>Zeitdifferenz Beseitigung - Erkennung</th>
+                                        <th>Fehlerstatus</th>
+                                    </tr>
+                                    <% for (var errId in  currentComponent['availableErrors']) { %>
+                                        <% var curr = currentComponent['availableErrors'][errId]; %>
+                                        <% if (curr['fehlerstatus'] == "beseitigt" || curr['fehlerstatus'] == "überprüft") { %>
+                                            <tr>
+                                                <td><% curr['fehlerbeschreibung'] %></td>
+                                                <td><% curr['erstelltAm'] %></td>
+                                                <td><% curr['erstelltVon'] %></td>
+                                                <td>
+                                                    <% for (catId in curr['fehlerkategorienIds_o']) { %>
+                                                        <% var current = curr['fehlerkategorienIds_o'][catId]; %>
+                                                        <% current['katBezeichnung'] %>
+                                                    <% } %>
+                                                </td>
+                                                <td><% curr['loesungsbeschreibung'] %></td>
+                                                <td><% curr['geloestVon'] %></td>
+                                                <td><% curr['geloestAm'] %></td>
+                                                <td><% curr['fehlerursache'] %></td>
+                                                <td><% curr['fehlerUrsachenId_o']['katBezeichnung'] %></td>
+                                                <td><% curr['resolveTimeDifference'] %></td>
+                                                <td><% curr['fehlerstatus'] %></td>
+                                            </tr>
+                                        <% } %>
+                                    <% } %>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    <% } %>
+</div>

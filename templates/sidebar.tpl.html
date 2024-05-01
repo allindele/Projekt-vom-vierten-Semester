@@ -1,0 +1,7 @@
+<!-- Navigationsbereich -->
+<ul>
+<% for(var i = 0; i < context.length; i++) { %>
+   <% var entry = context[i]; %>
+   <li><a href="#" data-action="<%entry[0]%>"><% entry[1] %></a></li>
+<% } %>
+</ul>

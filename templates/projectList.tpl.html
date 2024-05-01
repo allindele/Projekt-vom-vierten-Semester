@@ -1,0 +1,51 @@
+<h2>
+    Projekte
+</h2>
+
+<div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Database</button>
+    <div id="myDropdown" class="dropdown-content">
+        <button id="database" data-action="database">Betriebe</button>
+        <button id="database" data-action="database">Betrieb_db</button>
+        <button id="database" data-action="database">BewohnerTyp</button>
+        <button id="database" data-action="database">Haus_db</button>
+        <button id="database" data-action="database">Häuser</button>
+        <button id="database" data-action="database">Item_db</button>
+        <button id="database" data-action="database">Rezepte</button>
+        <button id="database" data-action="database">Staat</button>
+        <button id="database" data-action="database">Stadt</button>
+        <button id="database" data-action="database">Unternehmen</button>
+        <button id="database" data-action="database">WorkerClass</button>
+    </div>
+  </div> 
+
+
+<table id="projectTable">
+    <tr>
+        <% var ke = context[1]; %>
+        <% for(ke in context) {} %>
+        <p hidden><% ke = Object.keys(context[0]) %> <p /hidden>
+        <% for (var k in ke){ %>
+        <th> <% ke[k]%></th>
+        <% } %>
+
+    </tr>
+    <% for(var key in context) { %>
+        <% if(context[key]['ID'] == 0) continue; %>
+        <% var entry = context[key]; %>
+        <tr id=<%entry['ID']%>>
+            <% for ( var k in ke) { %>
+            <td>
+                <% entry[ke[k]] %>
+            </td>
+            <% } %>
+       </tr>
+    <% } %>
+ </table>
+
+<footer>
+   <p>
+      <button id="new" data-action="new">Anlegen</button>
+      <button id="detail" data-action="detail">Anzeigen</button>
+   </p>
+</footer>

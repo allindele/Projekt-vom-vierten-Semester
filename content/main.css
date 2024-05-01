@@ -1,0 +1,231 @@
+/* einfaches Layout fuer Demonstrator */
+
+* {
+   box-sizing: border-box;
+}
+
+html, body {
+   margin:0;
+   padding:0;
+   /* overflow: auto; */
+}
+
+body{
+   /* width: 100%; */
+   min-height: 100vh;
+   text-align: center;
+   display: flex;
+   flex-direction: column;
+}
+
+.wrapper {
+   display: flex;
+   flex: 1;
+}
+
+table {
+   border-collapse: collapse;
+   width: 100%;
+}
+table, th, td {
+   border: 1px solid black;
+   text-align: center;
+}
+
+table th {
+   background-color: lightgrey;
+}
+
+header {
+   height: 100px;
+   background-color:royalblue;
+   color: white;
+   display: flex;
+   align-items: center;
+   justify-content: left;
+}
+
+main {
+   padding-left: 20px;
+   padding-right: 20px;
+   flex: 1;
+   overflow-y: scroll;
+   background-color: rgb(123, 123, 123);
+}
+
+footer {
+   align-items: flex-end;
+   display: flex;
+   justify-content: center;
+}
+footer p {
+   text-align: center;
+}
+
+input[type="text"]:read-only {
+   background: #dddddd;
+}
+
+.clSelected {
+   background-color: blue;
+   color: white;
+}
+
+form {
+   display: grid;
+   grid-template-columns: 200px 1fr;
+   grid-gap: 16px;
+}
+form label {
+   grid-column: 1 / 2;
+}
+form input,
+form button {
+   grid-column: 2 / 3;
+}
+form button {
+   margin-top: 5px;
+}
+
+/* own stylings */
+
+nav {
+   flex: 0 0 18em;
+   order: -1;
+   background-color: rgb(211, 211, 211);
+}
+nav ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+}
+nav a {
+   font-size: 20px;
+   text-decoration: none;
+   color: rgb(0, 0, 0);
+}
+a:hover {
+   color: rgb(255, 255, 255);
+}
+a:focus{
+   color: royalblue;
+}
+
+.selected {
+   background-color: grey;
+}
+
+/* Filter area styling */
+.filter-container {
+   height: auto;
+   margin: auto;
+   text-align: center;
+   padding-bottom: 20px;
+}
+
+/* Evaluation Styling */
+.project-container,
+.category-container {
+   border: 3px solid black;
+   box-shadow: 5px 10px 8px #dddddd;
+   margin: 25px;
+   
+}
+
+.table-center {
+   display: flex;
+   justify-content: center;
+}
+
+.project-container table ,
+.category-container table {
+   width: 95%;
+   align-self: center;
+   display: inline-table;
+   padding-bottom: 10px;
+}
+
+.evaluation-container p {
+   -webkit-flex:1;
+   flex:1;
+   /* border-bottom: 1px solid black; */
+
+}
+
+.evaluation-container p > label{
+   font-weight: bold;
+}
+
+.evaluation-container .metadata {
+   display:-webkit-flex;
+   -webkit-justify-content: center;
+
+   display: flex;
+   justify-content: center;
+
+   border-bottom: 1px solid black;
+}
+
+
+.dropbtn {
+   background-color: #3498DB;
+   color: white;
+   padding: 16px;
+   font-size: 16px;
+   border: none;
+   cursor: pointer;
+ }
+ 
+ /* Dropdown button on hover & focus */
+ .dropbtn:hover, .dropbtn:focus {
+   background-color: #2980B9;
+ }
+ 
+ /* The container <div> - needed to position the dropdown content */
+ .dropdown {
+   position: relative;
+   display: inline-block;
+ }
+ 
+ /* Dropdown Content (Hidden by Default) */
+ .dropdown-content {
+   display: none;
+   position: absolute;
+   background-color: #f1f1f1;
+   min-width: 160px;
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   z-index: 1;
+ }
+ 
+ /* Links inside the dropdown */
+ .dropdown-content a {
+   color: black;
+   padding: 12px 16px;
+   text-decoration: none;
+   display: block;
+ }
+ 
+ /* Change color of dropdown links on hover */
+ .dropdown-content a:hover {background-color: #ddd;}
+ 
+ /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+ .show {display:block;}
+
+
+
+ .betrieb-dropdown-content{
+   position: absolute;
+   background-color: #f9f9f9;
+   min-width: 160px;
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   z-index: 1;
+ }
+ .betrieb-dropdown-content button {
+   float: none;
+   color: black;
+   padding: 12px 16px;
+   text-decoration: none;
+   display: block;
+   text-align: left;
+ }
+/* EOF */
