@@ -39,7 +39,6 @@ class Database_cl(object):
       
       self.tables = {}
       baseTable_cl.database = self.database
-      self.tables[DB_Table.Item_db] = ItemTable_cl()
 
 
       
