@@ -1,5 +1,5 @@
-app/__pycache__/*
-app/system/__pycache__/*
-__pycache__/*
+Implementierung/app/__pycache__/*
+Implementierung/app/system/__pycache__/*
+Implementierung/__pycache__/*
 app/Tables/*
 
