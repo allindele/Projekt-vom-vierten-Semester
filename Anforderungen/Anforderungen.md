@@ -28,7 +28,7 @@ Es soll ein Einsatzplan entwickelt werden, wobei Dozenten nachschauen können wo
 - Dozenten dürfen maximal 16 Stunden pro Woche eingesetzt sein. 
 - Studenten müssen nachschauen ob eine Vorlesung stattfindet oder nicht
 - Bei verschiedenen Standorten benötigen Dozenten 2 Stunden anreise Zeit
-
+- Jede Woche soll ein neuer Stundenplan erstellt werden
 
 ## 2.2. Funktionale Anforderungen
 
@@ -52,6 +52,10 @@ Es soll ein Einsatzplan entwickelt werden, wobei Dozenten nachschauen können wo
 # 4. Architektur
 
 # 5. Geschäftsprozesse
+
+1. Das Sekreteriat macht die Veranstaltungen
+2. Ein Dozent könnte sich krank melden
+3. Sekreteriat besetzt die Veranstaltung neu oder löscht diese
 
 # 6. Datenmodell
 
