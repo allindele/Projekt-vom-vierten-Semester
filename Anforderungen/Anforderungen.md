@@ -12,19 +12,43 @@
 
 ***
 
+# 1. Einleitung
+
+## 1.1. Einleitung
+
+Es soll ein Einsatzplan entwickelt werden, wobei Dozenten nachschauen können wo sie eingeteilt sind. Außerdem sollen Studenten sich ihren Stundenplan ansehen können. Desweiteren soll es einen bereich für das Sekreteriat geben, wobei die Krankmeldungen eingetragen werden sollen und das System automatisch ersatz findet.
+
+## 1.2. Rahmenbedingungen
+
+
 # 2. Anforderungen
 
 ## 2.1. Allgemeine Anforderungen
 
 - Dozenten dürfen maximal 16 Stunden pro Woche eingesetzt sein. 
-- Studenten müssen gucken ob eine Vorlesung stattfindet oder nicht
+- Studenten müssen nachschauen ob eine Vorlesung stattfindet oder nicht
 - Bei verschiedenen Standorten benötigen Dozenten 2 Stunden anreise Zeit
 
-## 1.2. Stundenplan
 
-Es soll ein Stundenplan für die Studenten angezeigt werden, wobei das Fach, der Mitarbeiter und der Raum angezeigt werden soll
+## 2.2. Funktionale Anforderungen
 
-## 1.3. Krankmeldungen
+### 2.2.1. Studentenbereich
 
-Wenn sich Dozenten krank melden, soll das Sekreteriat das in einem Extrabereich angeben können. Das System soll dann einen Ersatz finden und einsetzen.
+- Nach dem Anmelden sollen Infos über den Studenten angezeigt werden, wie der Name, Email, Semester und Fachbereich
+- Der Stundenplan des Studenten soll einsehbar sein
 
+### 2.2.2. Dozentenbereich
+
+- Nach dem Anmelden sollen Infos über den Dozenten angezeigt werden, wie der Name, Email und Fachbereich(e)
+- Es soll eine Abwesenheit gemeldet werden können, wobei der Name, der Grund und das Datum angegeben werden muss.
+
+### 2.2.3. Sekreteriatbereich
+
+- Im Sekreteriatbereich sollen die Abwesenheiten eingesehen werden können
+
+
+# 3. Use Case
+
+# 4. Architektur
+
+Es soll eine Webseite
