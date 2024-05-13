@@ -32,10 +32,10 @@ Es soll ein Einsatzplan entwickelt werden, wobei Dozenten nachschauen können wo
 
 ## 2.2. Funktionale Anforderungen
 
-### 2.2.1. Studentenbereich
+### 2.2.1. Allgemeiner Bereich
 
-- Nach dem Anmelden sollen Infos über den Studenten angezeigt werden, wie der Name, Email, Semester und Fachbereich
-- Der Stundenplan des Studenten soll einsehbar sein
+- Im Allgemeinem Bereich sollen alle Studenten ihren Stundenplan ihres Semesters und Fachbereich einsehen können
+
 
 ### 2.2.2. Dozentenbereich
 
