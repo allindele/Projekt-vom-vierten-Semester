@@ -51,4 +51,10 @@ Es soll ein Einsatzplan entwickelt werden, wobei Dozenten nachschauen können wo
 
 # 4. Architektur
 
-Es soll eine Webseite
+# 5. Geschäftsprozesse
+
+# 6. Datenmodell
+
+# 7. GUI-Design
+
+# 8. Klassendiagramm
