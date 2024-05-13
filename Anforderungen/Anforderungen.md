@@ -1,15 +1,20 @@
-# Inhaltsverzeichnis
+# Einsatzplan
 
-1. Anforderungen
-  - 1.1. Allgemeine Anforderungen
-  - 1.2. Stundenplan
-  - 1.3. Krankmeldungen
+
+# Inhaltsverzeichnis
+1. Einleitung
+  - 1.1. Einleitung
+  - 1.2. Rahmenbedingungen
+2. Anforderungen
+  - 2.1. Allgemeine Anforderungen
+  - 2.2. Funktionale Anforderungen
+  - 2.3. Nichtfunktionale Anforderungen
 
 ***
 
-# 1. Anforderungen
+# 2. Anforderungen
 
-## 1.1. Allgemeine Anforderungen
+## 2.1. Allgemeine Anforderungen
 
 - Dozenten dürfen maximal 16 Stunden pro Woche eingesetzt sein. 
 - Studenten müssen gucken ob eine Vorlesung stattfindet oder nicht
