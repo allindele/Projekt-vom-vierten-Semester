@@ -59,6 +59,9 @@ Es soll ein Einsatzplan entwickelt werden, wobei Dozenten nachschauen können wo
 
 # 6. Datenmodell
 
+Es wird eine My-sql Datenbank verwendet
+![](Datenbank.png)
+
 # 7. GUI-Design
 
 # 8. Klassendiagramm
