@@ -64,7 +64,7 @@ Das System muss allgemein diese Funktionalitäten beinhalten :
     - Abwesenheiten bestätigen oder ablehnen
     - Einen Studenplan zu generieren
     - Einen Stundenplan einzusehen
-    - Nach einer einer Generierung oder einer Veränderung eines Stundenplans eine Email zur Signalisierung der Vervügbarkeit an alle Studierende und Dozenten Schicken
+    - Nach einer Generierung oder einer Veränderung eines Stundenplans eine Email zur Signalisierung der Vervügbarkeit an alle Studierende und Dozenten Schicken
 
  6. Ein Stundenplan musst Name des Lehrers beinhalten, des Kurses und des Raums.
     
@@ -77,6 +77,7 @@ Diese Qualitäten musst das System erfüllen :
  - Intuitiv
  - Sicher(Ein Studierende oder Dozent darf nie auf den Adminbereich zugreifen )
  - Lesbar
+ - Auf alle Geräte-typen zugreifbar
  - System soll verfügbar sein außer bei Updates
 
 # 3. Use Case 
@@ -100,6 +101,12 @@ Diese Qualitäten musst das System erfüllen :
 
 # 4. Architektur
 
+Wir entscheiden uns für eine Web-App, da man auf alle Geräte und von überall zugreifen kann.
+Die App wird diese Technologien benutzen:
+  - Backend: Mit Python, weil es einfach zu lernen ist, HTTP Anfragen gut unterstüzt, was sehr wichtig für eine Web-App ist, und es gibt. große Entwickler Community.
+  - Frontend: Mit HTML, CSS und JS, weil alle Browser das kann, große Entwickler Community die es benutzt, Programmierer haben, damit Erfahrung.
+  - Datenbank: Mit MySQL, strukturiert, gut für das Suchen, große Entwickler Community
+
 # 5. Geschäftprozesse
   
 - Beschreibung Laufzeit des Systems
@@ -107,7 +114,7 @@ Diese Qualitäten musst das System erfüllen :
    5.1. _use case Generierung eines Einsatzplan_
         
         Ein Admin loggt sich im System ein und generiert einen Einsatztplan.
-        Der soll eine Nachricht per Mail an Studierende auslösen.
+        Nach der generierung soll eine Benachritigung per Mail an Studierende geschickt werden .
 
    5.2. _use case Abweseheintmeldung einer Lehrperson_
     
