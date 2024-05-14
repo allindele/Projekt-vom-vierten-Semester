@@ -14,7 +14,8 @@
     - 3.2 Optional weitere Use Case Diagramme
 4. Architektur
 5. Geschäftprozesse
-    - Beschreibung Laufzeit des Systems 
+    - 1. _use case Generierung eines Einsatzplan_
+    - 2. _use case Abwesenheintmeldung einer Lehrperson_
 6. Datenmodell
 7. GUI-Design
 8. Klassendiagramm
@@ -25,7 +26,7 @@
 
 ## 1.1 Einleitung
 
-In diesem Projekt geht es um die Entwicklung einer Software Lösung, die Stundenpläne automatisch erzeugt und an der akademischen Gemeinschaft von "Wissen für Alle - die Wissensakademie" vergeben musst.
+In diesem Projekt geht es um die Entwicklung einer Software Lösung, die Stundenpläne wöchentlich, automatisch erzeugt und an der akademischen Gemeinschaft von "Wissen für Alle - die Wissensakademie" vergeben musst.
 
 ## 1.2 Rahmenbedingungen
 
@@ -79,6 +80,9 @@ Diese Qualitäten musst das System erfüllen :
  - System soll verfügbar sein außer bei Updates
 
 # 3. Use Case 
+
+## 3.1 Use Case Diagramm
+
   Für einen Studierende
   ![](use-case-student.png)
 
@@ -88,7 +92,32 @@ Diese Qualitäten musst das System erfüllen :
   Für einen Admin
   ![](use-case-admin.png)
 
+## 3.2 Optional weitere Use Case Diagramme
+    
+  Für einen Admin
+  ![](use-case-admin-option.png)
+    
 
+# 4. Architektur
+
+# 5. Geschäftprozesse
+  
+- Beschreibung Laufzeit des Systems
+    
+   5.1. _use case Generierung eines Einsatzplan_
+        
+        Ein Admin loggt sich im System ein und generiert einen Einsatztplan.
+        Der soll eine Nachricht per Mail an Studierende auslösen.
+
+   5.2. _use case Abweseheintmeldung einer Lehrperson_
+    
+        Eine Lehrperson loggt sich in seinen Bereich ein, füllt das Formular(Name, Grunc, Datum) aus, und schickt es.
+        Ein Admin listet alle Abwesenheiten und hat die Möglichkeit zu akzeptieren oder abzulehnen.
+        Eine Annahme löst eine neue generierung des Einsatzplan und das Schicken eine Mail an alle Dozenten und Studierende.
+
+   5.3. _use case Abwesenheitmeldungen eisehen_
+        
+        Nach dem Login kann ein Admin alle Meldungen sehen, sie bestätigen oder ablehnen.
 
 # 6. Datenmodell
 
