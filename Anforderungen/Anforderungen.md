@@ -1,4 +1,4 @@
-# Einsatzplan
+# Einsatzplan für die Firma "Wissen für Alle - die Wissensakademie"
 
 # Inhaltsverzeichnis
 
@@ -30,14 +30,19 @@ In diesem Projekt geht es um die Entwicklung einer Software Lösung, die Stunden
 
 ## 1.2 Rahmenbedingungen
 
-Vorher wurde die Plannung manuell gemacht, aber da das Geschäft sich stark entwickelt hat. Braucht die Administration eine bessere Art und Weise, die Plannug von Kurse :
+Vorher wurde die Mitarbeiter Einsatztplannung manuell gemacht, aber da das Geschäft sich stark entwickelt hat. Braucht die Administration eine bessere Art und Weise, die Plannug von Kurse :
  - zu erstellen, 
  - zu modifizieren 
  - und an Studierende und Dozenten von verschiedene Standorten zu teilen.
+ es gibt Ü, V, dauern 2 Stunden
+
+ Was ist das Problem
+ Wie löse ich das Problem
+ Achten auf Grammatik
 
 # 2. Anforderungen
 
-## 2.1. Allgemeine Anforderungen
+## 2.1. Allgemeine Anforderungen(gehören zu Rahmenbedingungen)
 
 - Dozenten dürfen maximal 16 Stunden pro Woche eingesetzt sein. 
 - Studenten müssen nachschauen ob eine Vorlesung stattfindet oder nicht
@@ -81,7 +86,9 @@ Diese Qualitäten musst das System erfüllen :
  - System soll verfügbar sein außer bei Updates
 
 # 3. Use Case 
-
+- Für jeder Use Case Beschreibung fällt
+- Voraussetzungen
+- Person kann das.(statich)
 ## 3.1 Use Case Diagramm
 
   Für einen Studierende
@@ -100,7 +107,8 @@ Diese Qualitäten musst das System erfüllen :
     
 
 # 4. Architektur
-
+Welche Entscheidungen haben wir uns für die realisiereung des Lösung des System
+Architektur(ein bild reicht)
 Wir entscheiden uns für eine Web-App, da man auf alle Geräte und von überall zugreifen kann.
 Die App wird diese Technologien benutzen:
   - Backend: Mit Python, weil es einfach zu lernen ist, HTTP Anfragen gut unterstüzt, was sehr wichtig für eine Web-App ist, und es gibt. große Entwickler Community.
@@ -108,7 +116,7 @@ Die App wird diese Technologien benutzen:
   - Datenbank: Mit MySQL, strukturiert, gut für das Suchen, große Entwickler Community
 
 # 5. Geschäftprozesse
-  
+  - Sequenzdiagramm
 - Beschreibung Laufzeit des Systems
     
    5.1. _use case Generierung eines Einsatzplan_
@@ -122,13 +130,16 @@ Die App wird diese Technologien benutzen:
         Ein Admin listet alle Abwesenheiten und hat die Möglichkeit zu akzeptieren oder abzulehnen.
         Eine Annahme löst eine neue generierung des Einsatzplan und das Schicken eine Mail an alle Dozenten und Studierende.
 
-   5.3. _use case Abwesenheitmeldungen eisehen_
+   5.3. _use case Abwesenheitmeldungen einsehen_
         
         Nach dem Login kann ein Admin alle Meldungen sehen, sie bestätigen oder ablehnen.
+
+   5.4 _use case was eine Krankmeldung auslöst_
 
 # 6. Datenmodell
 
 Es wird eine My-sql Datenbank verwendet
+Orte hinzufügen
 ![](Datenbank.png)
 
 # 7. GUI-Design
@@ -143,6 +154,7 @@ Es wird eine My-sql Datenbank verwendet
   ![](4.png)
 
   Für einen Dozent
+  Abwesendheitsgrund für den Formular
   ![](5.png)
   ![](6.png)
   ![](7.png)
@@ -151,3 +163,5 @@ Es wird eine My-sql Datenbank verwendet
   ![](8.png)
   ![](9.png)
   ![](10.png)
+
+  Aufwandschätzung
