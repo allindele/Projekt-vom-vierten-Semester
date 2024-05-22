@@ -107,6 +107,9 @@ Diese Qualitäten musst das System erfüllen :
     
 
 # 4. Architektur
+
+![](Architektur.png)
+
 Welche Entscheidungen haben wir uns für die realisiereung des Lösung des System
 Architektur(ein bild reicht)
 Wir entscheiden uns für eine Web-App, da man auf alle Geräte und von überall zugreifen kann.
