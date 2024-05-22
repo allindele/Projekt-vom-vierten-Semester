@@ -8,7 +8,7 @@
 2. Anforderungen
     - 2.1. Allegemeine Anforderungen
     - 2.2. funktionale Anforderungen
-    - 2.3. Nichtfunktionale Anforderungen
+    - 2.3. Nicht-funktionale Anforderungen
 3. Use Case (Anwendungsfälle)
     - 3.1 Use Case Diagramm
     - 3.2 Optional weitere Use Case Diagramme
@@ -26,7 +26,7 @@
 
 ## 1.1 Einleitung
 
-In diesem Projekt geht es um die Entwicklung einer Software Lösung, die Stundenpläne wöchentlich, automatisch erzeugt und an der akademischen Gemeinschaft von "Wissen für Alle - die Wissensakademie" vergeben musst.
+In diesem Projekt geht es um die Entwicklung einer Software Lösung, die Stundenpläne wöchentlich, automatisch erzeugt und an der akademischen Gemeinschaft von "Wissen für Alle - die Wissensakademie" vergeben muss.
 
 ## 1.2 Rahmenbedingungen
 
@@ -34,7 +34,7 @@ Vorher wurde die Mitarbeiter Einsatztplannung manuell gemacht, aber da das Gesch
  - zu erstellen, 
  - zu modifizieren 
  - und an Studierende und Dozenten von verschiedene Standorten zu teilen.
- es gibt Ü, V, dauern 2 Stunden
+ es gibt Übungen, Vorlesungen, dauern 2 Stunden
 
  Was ist das Problem
  Wie löse ich das Problem
@@ -57,36 +57,36 @@ Das System muss allgemein diese Funktionalitäten beinhalten :
 
  2. Im Allgemeinem Bereich sollen alle Studenten ihren Stundenplan ihres Semesters und Fachbereich einsehen können
  
- 3. Ein Studierende musst in der Lage sein :
-    - Seinen Stundenplan einzusehen
-    
- 4. Ein Dozent musst in der Lage sein 
+ 3. Ein Studierende muss in der Lage sein :
     - seinen Stundenplan einzusehen
-    - Seine Abweseheit zu melden
     
- 5. Ein Admin musst in der Lage sein :
-    - Sich alle Abwesenheiten anzugucken
+ 4. Ein Dozent muss in der Lage sein 
+    - seinen Stundenplan einzusehen
+    - seine Abweseheit zu melden
+    
+ 5. Ein Admin muss in der Lage sein :
+    - sich alle Abwesenheiten anzugucken
     - Abwesenheiten bestätigen oder ablehnen
-    - Einen Studenplan zu generieren
-    - Einen Stundenplan einzusehen
-    - Nach einer Generierung oder einer Veränderung eines Stundenplans eine Email zur Signalisierung der Vervügbarkeit an alle Studierende und Dozenten Schicken
+    - einen Studenplan zu generieren
+    - einen Stundenplan einzusehen
+    - nach einer Generierung oder einer Veränderung eines Stundenplans eine Email zur Signalisierung der Vervügbarkeit an alle Studierende und Dozenten Schicken
 
- 6. Ein Stundenplan musst Name des Lehrers beinhalten, des Kurses und des Raums.
+ 6. Ein Stundenplan muss der Name des Lehrers beinhalten, des Kurses und des Raums.
     
 
 ##  2.3. Nichtfunktionale Anforderungen
 
-Diese Qualitäten musst das System erfüllen :
+Diese Qualitäten muss das System erfüllen :
 
- - Benutzerfreundlich
- - Intuitiv
- - Sicher(Ein Studierende oder Dozent darf nie auf den Adminbereich zugreifen )
- - Lesbar
- - Auf alle Geräte-typen zugreifbar
+ - benutzerfreundlich
+ - intuitiv
+ - sicher(Ein Studierende oder Dozent darf nie auf den Adminbereich zugreifen )
+ - lesbar
+ - auf alle Geräte-typen zugreifbar
  - System soll verfügbar sein außer bei Updates
 
 # 3. Use Case 
-- Für jeder Use Case Beschreibung fällt
+- für jeder Use Case Beschreibung fällt
 - Voraussetzungen
 - Person kann das.(statich)
 ## 3.1 Use Case Diagramm
@@ -110,8 +110,8 @@ Diese Qualitäten musst das System erfüllen :
 
 ![](Architektur.png)
 
-Welche Entscheidungen haben wir uns für die realisiereung des Lösung des System
-Architektur(ein bild reicht)
+Welche Entscheidungen haben wir uns für die Realisiereung der Lösung des Systemarchitektur
+(ein bild reicht)
 Wir entscheiden uns für eine Web-App, da man auf alle Geräte und von überall zugreifen kann.
 Die App wird diese Technologien benutzen:
   - Backend: Mit Python, weil es einfach zu lernen ist, HTTP Anfragen gut unterstüzt, was sehr wichtig für eine Web-App ist, und es gibt. große Entwickler Community.
@@ -124,18 +124,18 @@ Die App wird diese Technologien benutzen:
     
    5.1. _use case Generierung eines Einsatzplan_
         
-        Ein Admin loggt sich im System ein und generiert einen Einsatztplan.
+        Ein Sekräter loggt sich im System ein und generiert einen Einsatztplan.
         Nach der generierung soll eine Benachritigung per Mail an Studierende geschickt werden .
 
    5.2. _use case Abweseheintmeldung einer Lehrperson_
     
-        Eine Lehrperson loggt sich in seinen Bereich ein, füllt das Formular(Name, Grunc, Datum) aus, und schickt es.
-        Ein Admin listet alle Abwesenheiten und hat die Möglichkeit zu akzeptieren oder abzulehnen.
+        Eine Lehrperson loggt sich in seinen Bereich ein, füllt das Formular(Name, Grunc, Datum) aus und schickt es.
+        Ein Sekräter listet alle Abwesenheiten und hat die Möglichkeit zu akzeptieren oder abzulehnen.
         Eine Annahme löst eine neue generierung des Einsatzplan und das Schicken eine Mail an alle Dozenten und Studierende.
 
    5.3. _use case Abwesenheitmeldungen einsehen_
         
-        Nach dem Login kann ein Admin alle Meldungen sehen, sie bestätigen oder ablehnen.
+        Nach dem Login kann der Sekräter alle Meldungen sehen, sie bestätigen oder ablehnen.
 
    5.4 _use case was eine Krankmeldung auslöst_
 
