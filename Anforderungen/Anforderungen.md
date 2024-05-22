@@ -128,7 +128,9 @@ Die App wird diese Technologien benutzen:
         Nach der generierung soll eine Benachritigung per Mail an Studierende geschickt werden .
 
    5.2. _use case Abweseheintmeldung einer Lehrperson_
-    
+
+    ![](Krankmeldung_sequenz.png)
+
         Eine Lehrperson loggt sich in seinen Bereich ein, füllt das Formular(Name, Grunc, Datum) aus und schickt es.
         Ein Sekräter listet alle Abwesenheiten und hat die Möglichkeit zu akzeptieren oder abzulehnen.
         Eine Annahme löst eine neue generierung des Einsatzplan und das Schicken eine Mail an alle Dozenten und Studierende.
