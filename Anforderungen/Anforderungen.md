@@ -44,7 +44,7 @@ Vorher wurde die Mitarbeiter Einsatztplannung manuell gemacht, aber da das Gesch
 
 ## 2.1. Allgemeine Anforderungen(gehören zu Rahmenbedingungen)
 
-- Dozenten dürfen maximal 16 Stunden pro Woche eingesetzt sein. 
+- Dozenten dürfen maximal 16 Stunden pro Woche eingesetzt werden. 
 - Studenten müssen nachschauen ob eine Vorlesung stattfindet oder nicht
 - Bei verschiedenen Standorten benötigen Dozenten 2 Stunden anreise Zeit
 - Jede Woche soll ein neuer Stundenplan erstellt werden
