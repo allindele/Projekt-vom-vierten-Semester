@@ -4,12 +4,13 @@ import  mysql.connector
 import mysql.connector.pooling
 
 dbconfig = {
-   "host":"",
-   "user":"",
-   "password":"",
-   "database":"",
+   "host":"localhost",
+   "user":"SysUser",
+   "password":"0EfwxC[Y3v51Sh20",
+   "database":"swe",
    "autocommit":True
 }
+
 
 class baseTable_cl():
 
@@ -88,6 +89,15 @@ class baseTable_cl():
         mycursor.close()
         connection.close()
         return result
+    
+    def deleteData(self,search):
+        connection = mysql.connector.connect(**dbconfig)
+        mycursor = connection.cursor()
+
+        mycursor.execute("DELETE FROM "+self.table+" WHERE "+search)
+        connection.commit()
+        mycursor.close()
+        connection.close()
 
 
     def searchDataNew(self,columns,values):
@@ -206,14 +216,32 @@ class Veranstaltung_cl(baseTable_cl):
        
         for x in items:
             result[x[0]] = {
-                columns[1]:x[1],
-                columns[2]:x[2],
-                columns[3]:x[3],
-                columns[4]:x[4],
-                columns[5]:x[5]
+                columns[1][0]:x[1],
+                columns[2][0]:x[2],
+                columns[3][0]:x[3],
+                columns[4][0]:x[4],
+                columns[5][0]:x[5]
             }
         return result
     
     def getUpdateString(self,data):
         return "Where `VNr`='"+data["VNr"]+"'"
+
+class KrankMeldung_cl(baseTable_cl):
+    def __init__(self):
+        super().__init__("krankmeldung")
+
+    def combineData(self,items,columns,skip=0):
+        result = {}
+       
+        for x in items:
+            result[x[0]] = {
+                columns[1][0]:x[1],
+                columns[2][0]:x[2],
+                columns[3][0]:x[3]
+            }
+        return result
+    
+    def getUpdateString(self,data):
+        return "Where `Knr`='"+data["Knr"]+"'"
         

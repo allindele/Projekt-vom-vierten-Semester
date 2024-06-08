@@ -1,0 +1,17 @@
+<table>
+    <tr>
+        <td>Name</td>
+        <td>Grund</td>
+        <td>Datum</td>
+        <td>Action</td>
+    </tr>
+    <% for(var key in context){%>
+        <tr id = <%key%>>
+            <td>Hier den Name Eintragen</td>
+            <td>Von: <% context[key]["Grund"] %></td>
+            <td>Bis: <% context[key]["Von"] %><br>
+            <% context[key]["Bis"] %></td>
+            <td><button data-action="reject" id = <%key%>>Ablehnen</button></td>
+        </tr>
+    <%}%>
+</table>

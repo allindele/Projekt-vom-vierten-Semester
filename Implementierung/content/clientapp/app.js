@@ -7,6 +7,7 @@ class Application {
         this.projekteView = new Projekte("main");
         this.header = new headerClass("header")
         this.requester = new Requester_cl();
+        this.krankmelder = new krankmelder_cl("main")
     }
 
     run(){
@@ -85,7 +86,12 @@ class Application {
                     case "users.detail":
                         this.userView.renderDetail(data[1]['id'], data[1]['role']);
                         break;
-
+                    case "krankmeldung.create":
+                        this.krankmelder.renderDetail();
+                        break;
+                    case "krankmeldung.list":
+                            this.krankmelder.renderList();
+                            break;
                     default:
                         console.log("message \"" + data[0] + "\" unknown")
                 }

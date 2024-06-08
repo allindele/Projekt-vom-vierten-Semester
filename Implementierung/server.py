@@ -4,7 +4,8 @@ import sys
 import os.path
 import cherrypy
 
-from app import application, template, login
+from app import application, template, login,krankmeldung
+from app import database
 
 from app import nav
 from app.usermanager import UserManager_cl
@@ -16,6 +17,7 @@ def main():
    
    # aktuelles Verzeichnis ermitteln, damit es in der Konfigurationsdatei als
    # Bezugspunkt verwendet werden kann
+   db = database.Database_cl()
    try:                                    # aktuelles Verzeichnis als absoluter Pfad
       currentDir_s = os.path.dirname(os.path.abspath(__file__))
    except:
@@ -61,6 +63,12 @@ def main():
    cherrypy.tree.mount(
       nav.Navbar_cl(userman),
       '/navbar',
+      {'/': {'request.dispatch': cherrypy.dispatch.MethodDispatcher()}}
+   )
+
+   cherrypy.tree.mount(
+      krankmeldung.Krankmeldung_cl(userman,db),
+      '/krankmeldung',
       {'/': {'request.dispatch': cherrypy.dispatch.MethodDispatcher()}}
    )
 

@@ -14,14 +14,15 @@ from .Tables.basetable import *
 
 
 class DB_Table():
-   Markt = "Markt"
+   Markt = "Markt",
+   KrankMeldung = "krankmeldung"
 
 
 dbconfig = {
-   "host":"",
-   "user":"",
-   "password":"",
-   "database":"",
+   "host":"localhost",
+   "user":"SysUser",
+   "password":"0EfwxC[Y3v51Sh20",
+   "database":"swe",
    "autocommit":True
 }
 
@@ -38,6 +39,7 @@ class Database_cl(object):
       self.database.autocommit = True
       
       self.tables = {}
+      self.tables[DB_Table.KrankMeldung] = KrankMeldung_cl()
       baseTable_cl.database = self.database
 
 
@@ -107,6 +109,12 @@ class Database_cl(object):
       except Exception as e:
          print(e)
          
+   def deleteEntry(self,table,search):
+      try:
+         return self.tables[table].deleteData(search)
+      except Exception as e:
+         print(e)
+      
    def getStructur(self,table):
       mycursor = self.database.cursor()
       mycursor.execute("SHOW COLUMNS FROM "+table)
@@ -117,18 +125,3 @@ class Database_cl(object):
          retVal[s]=''
       return retVal
 
-
-   def insertData(self,table,data):
-      if not (data["ID"] == '' or data["ID"] == '0' ) or table == None:
-         return
-
-      mycursor = self.database.cursor()
-      sqlQuery = "INSERT INTO " + table + " VALUES( "
-      for c in data.keys():
-         sqlQuery += "'"+data[c] + "', "
-      sqlQuery=sqlQuery[:len(sqlQuery)-2]
-      sqlQuery +=')'
-      print (sqlQuery)
-      mycursor.execute(sqlQuery)
-      self.database.commit()
-      return "1"

@@ -67,7 +67,6 @@ class UserManager_cl(object):
 
          user = self.getUsers(str(splitted[0]))
          return user
-
 # ------------------------------- User Management -------------------------------
    #-------------------------------------------------------
    def readUsers(self):
@@ -109,9 +108,9 @@ class UserManager_cl(object):
       return users
 
 
-   def getUserUnternehmen(self):
+   def getUserID(self):
       user = self.getCurrentUser()
-      return user['unternehmen']
+      return user['id']
    #-------------------------------------------------------
    def saveOrUpdateUsers(self, id, data):
    #-------------------------------------------------------
