@@ -16,6 +16,7 @@ from .Tables.basetable import *
 class DB_Table():
    Markt = "Markt",
    KrankMeldung = "krankmeldung"
+   Einsatzplan = "Veranstaltungen"
 
 
 dbconfig = {
@@ -40,6 +41,7 @@ class Database_cl(object):
       
       self.tables = {}
       self.tables[DB_Table.KrankMeldung] = KrankMeldung_cl()
+      self.tables[DB_Table.Einsatzplan] = Einsatzplan_cl()
       baseTable_cl.database = self.database
 
 

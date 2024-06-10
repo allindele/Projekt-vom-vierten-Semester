@@ -1,0 +1,16 @@
+<form id="einsatplan-form">
+    <lable>Von</lable>
+    <input type="datetime-local" name="Von" value=<%context["Von"]%>>
+    <lable>Bis</lable>
+    <input type="datetime-local" name="Bis" value=<%context["Bis"]%>>
+    <label>Wer</label>
+    <select name="userID" value=<%context["userID"]%>>
+        options
+    </select>
+    <label>Ort</label>
+    <input type="text" name="Ort" value=<%context["Ort"]%>>
+    <label>Type</label>
+    <input type="text" name="Type" value=<%context["Type"]%>>
+</form>
+
+<button data-action="send" id=0>Confirm</button>

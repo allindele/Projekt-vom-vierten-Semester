@@ -8,6 +8,7 @@ class Application {
         this.header = new headerClass("header")
         this.requester = new Requester_cl();
         this.krankmelder = new krankmelder_cl("main")
+        this.einsatzplan = new einsatzplan_cl("main")
     }
 
     run(){
@@ -92,6 +93,12 @@ class Application {
                     case "krankmeldung.list":
                             this.krankmelder.renderList();
                             break;
+                    case "einsatzplan.list":
+                        this.einsatzplan.renderList();
+                        break;
+                    case "einsatzplan.detail":
+                        this.einsatzplan.renderDetail();
+                        break;
                     default:
                         console.log("message \"" + data[0] + "\" unknown")
                 }

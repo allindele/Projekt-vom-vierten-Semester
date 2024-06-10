@@ -244,4 +244,24 @@ class KrankMeldung_cl(baseTable_cl):
     
     def getUpdateString(self,data):
         return "Where `Knr`='"+data["Knr"]+"'"
+
+class Einsatzplan_cl(baseTable_cl):
+    def __init__(self):
+        super().__init__("veranstaltung")
+
+    def combineData(self,items,columns,skip=0):
+        result = {}
+       
+        for x in items:
+            result[x[0]] = {
+                columns[1][0]:x[1],
+                columns[2][0]:x[2],
+                columns[3][0]:x[3],
+                columns[4][0]:x[4],
+                columns[5][0]:x[5]
+            }
+        return result
+    
+    def getUpdateString(self,data):
+        return "Where `Vnr`='"+data["Vnr"]+"'"
         

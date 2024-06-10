@@ -21,7 +21,9 @@ class Navbar_cl(object):
         nav = [
             ["home", "Startseite"],
             ["krankmeldung.create","Test Krankmeldung Erstellen"],
-            ["krankmeldung.list","Test Krankmeldung List"]
+            ["krankmeldung.list","Test Krankmeldung List"],
+            ["einsatzplan.list","EPlan"],
+            ["einsatzplan.detail","EDetail"]
         ]
 
         if(self.usermanager.userAuthenticated()):

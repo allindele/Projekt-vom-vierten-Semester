@@ -4,7 +4,7 @@ import sys
 import os.path
 import cherrypy
 
-from app import application, template, login,krankmeldung
+from app import application, template, login,krankmeldung,plan
 from app import database
 
 from app import nav
@@ -69,6 +69,11 @@ def main():
    cherrypy.tree.mount(
       krankmeldung.Krankmeldung_cl(userman,db),
       '/krankmeldung',
+      {'/': {'request.dispatch': cherrypy.dispatch.MethodDispatcher()}}
+   )
+   cherrypy.tree.mount(
+      plan.plan_Cl(userman,db),
+      '/plan',
       {'/': {'request.dispatch': cherrypy.dispatch.MethodDispatcher()}}
    )
 
