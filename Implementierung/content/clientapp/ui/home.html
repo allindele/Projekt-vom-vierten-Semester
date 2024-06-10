@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        .align-center {
+            text-align: center;
+        }
+        .box-center {
+            display: flex;
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center;         
+        }
+        .mg-m {
+            margin: 0.8rem;
+        }
+        .pd-m {
+            padding: 0.5rem;
+        }
+        .h-60 {
+            height: 60vh;
+        }
+        .w-60 {
+            width: 60vw;
+        }
+        .h-100 {
+            height: 100vh;
+        }
+        .w-100 {
+            width: 100vw;
+        }
+        .border-black {
+            border: 0.2rem solid black;
+        }
+        .bg-white {
+            background-color: white;
+        }
+        .box-space-around {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .d-btn-w {
+            width: 20vw;
+        }
+        .d-btn-h {
+            height: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-center h-100 w-100">
+        <h3 class="mg-m pd-m">Startseite</h3>
+        <div class="h-60 w-60 border-black box-space-around">
+            <button class="bg-white border-black mg-m pd-m align-center d-btn-w d-btn-h">Studentenbereich</button>
+            <button class="bg-white border-black mg-m pd-m align-center d-btn-w d-btn-h">Adminbereich</button>
+            <button class="bg-white border-black mg-m pd-m align-center d-btn-w d-btn-h">Dozentenbereich</button>
+        </div>
+    </div>
+</body>
+</html>
