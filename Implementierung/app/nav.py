@@ -20,6 +20,7 @@ class Navbar_cl(object):
    #-------------------------------------------------------
         nav = [
             ["krankmeldung.list","Test Krankmeldung List"],
+            ["krankmeldung.create","Test Krankmeldung Detail"],
             ["einsatzplan.list","EPlan"],
             ["einsatzplan.detail","EDetail"]
         ]

@@ -30,15 +30,18 @@ class plan_Cl(object):
             if(arg1=="0"):
                pass
             else:
-               data = self.db.getData(DB_Table.Einsatzplan,arg1)
+               data = self.db.searchData(DB_Table.Einsatzplan,"`Vnr`='"+arg1+"'")[int(arg1)]
+               data["Vnr"] = int(arg1)
          elif(cmd=="getPersonal" and len(arg1)>0 and len(arg2)>0):
             arg1 = datetime.strptime(arg1,"%Y-%m-%dT%H:%M")
             arg2 = datetime.strptime(arg2,"%Y-%m-%dT%H:%M")
             data = self.getAvailablePersonal(arg1,arg2,arg3)
          else:
-            data = self.getEinsatzplan(1)
+            data = self.getEinsatzplan(0)
+            data["extra"] = '<button data-action="edit">Edit</button>'
+
       else:
-         data = self.db.searchData(DB_Table.Einsatzplan,"`userID`="+self.usermanager.getUserID())         
+         data =self.getEinsatzplan(int(self.usermanager.getUserID()))
       
       return json.dumps(data,ensure_ascii=False,default=str)
 
@@ -53,7 +56,7 @@ class plan_Cl(object):
          corruptData = True
          jsonData={}
 
-      if(arg1 == "zahl"):
+      if(arg1 != ""):
          self.db.updateData(DB_Table.Einsatzplan,jsonData)
          pass
       else:
@@ -70,10 +73,11 @@ class plan_Cl(object):
       
    def getAvailablePersonal(self,startTime,endTime,location):
       arbeiter = self.db.searchData(DB_Table.User,"`Rolle`='Arbeiter'")
+      krankmeldungen = self.db.getData(DB_Table.KrankMeldung)
       veranstaltungen = self.getEinsatzplanCurrentWeek()
 
-      for k,v in veranstaltungen.items():
-         if (v["Von"].day != startTime.day)and (v["Von"].month != startTime.month) and (v["Von"].year != startTime.year): 
+      for v in veranstaltungen.values():
+         if (v["Von"].day != startTime.day)or (v["Von"].month != startTime.month) or (v["Von"].year != startTime.year): 
             continue
          if v["userID"] not in arbeiter:
             continue
@@ -85,22 +89,29 @@ class plan_Cl(object):
          elif (startTime.hour > v["Bis"].hour + extraTime):
             continue
          del(arbeiter[v["userID"]])
+      for v in krankmeldungen.values():
+         if ((v["Von"].day <= startTime.day)and (v["Von"].month <= startTime.month) and (v["Von"].year <= startTime.year)and
+             (v["Bis"].day <= startTime.day)and (v["Bis"].month <= startTime.month) and (v["Bis"].year <= startTime.year)
+             ):
+            del(arbeiter[v["userID"]])
       return arbeiter
    
    Weekday = {0:"Mo",1:"Di",2:"Mi",3:"Do",4:"Di",5:"Fr",6:"Sa",7:"So"}
 
    def getEinsatzplanCurrentWeek(self):
       t = datetime.today().weekday()
-      weekstart = datetime.today() + timedelta(days=-t)
+      weekstart = datetime.today() + timedelta(days=-(t+1))
       weekend = datetime.today() + timedelta(days=6-t)
       data  = self.db.searchData(DB_Table.Einsatzplan,"`Von`>='"+str(weekstart)+"' AND `Von` <='"+str(weekend)+"'")
       return data
    
-   def getEinsatzplan(self,custom):
+   def getEinsatzplan(self,custom:int):
       result = {"Mo":{},"Di":{},"Mi":{},"Do":{},"Fr":{}}
       data  = self.getEinsatzplanCurrentWeek()
 
       for k,v in data.items():
+         if custom != 0 and v["userID"] !=  custom:
+            continue
          flag = False
          c = 1
          while not flag:

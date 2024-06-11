@@ -7,10 +7,17 @@ class einsatzplan_cl{
         this.veranstaltundDetail = "veranstaltungDetail.tpl.html";
         this.krankmeldungList = "einsatzplan.tpl.html";
         this.requester = new Requester_cl();
+        this.prevElem = undefined
     }   
     
-    renderDetail() {
-        let path = "/plan/detail";
+    renderDetail(id) {
+        let path = "/plan/detail/";
+        if (parseInt(id)>0){
+            path += id
+        }
+        else{
+            path += 0
+        }
         this.requester.GET_px(path).then(result => {
             let data = JSON.parse(result);
             this.doRenderDetail(this.veranstaltundDetail, data);
@@ -88,6 +95,9 @@ class einsatzplan_cl{
         if(cmd == "back"){
             //display navigation page
         }
+        if(cmd == "edit" && this.prevElem != undefined){
+             APP.instance.changeView("app.cmd",["einsatzplan.detail",this.prevElem.id])
+        }
     }
 
     getFormDataAsJson(form) {
@@ -108,7 +118,6 @@ class einsatzplan_cl{
         let table = document.getElementById("einsatz")
         //
 
-        data["Montag"]
         this.rowData("Mo",data,table)
         this.rowData("Di",data,table)
         this.rowData("Mi",data,table)
@@ -136,6 +145,9 @@ class einsatzplan_cl{
                     time = data[tag][entry][inhalt]["Bis"]
                     t.innerHTML = data[tag][entry][inhalt]["Type"]
                     t.id = dat["Vnr"]
+                    t.addEventListener("click",(e)=>{
+                        this.highlightRow(e,this)
+                    })
                     row.append(t)
             }    
         for(let i = time;i<20;i++){
@@ -173,5 +185,22 @@ class einsatzplan_cl{
             } 
 
         })
+    }
+
+    highlightRow(e, that){
+        let currentRow = e.target;
+        
+        if(that.prevElem != undefined){
+            that.prevElem.classList.remove('selected');
+        }
+     
+        if(currentRow == that.prevElem){
+            that.prevElem.classList.remove('selected');
+            that.prevElem = undefined;
+        }
+        else {
+            currentRow.classList.add('selected');
+            that.prevElem = e.target;
+        }
     }
 }

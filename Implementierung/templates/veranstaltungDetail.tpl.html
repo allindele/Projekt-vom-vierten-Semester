@@ -1,8 +1,8 @@
 <form id="einsatplan-form">
     <lable>Von</lable>
-    <input type="datetime-local" name="Von" value=<%context["Von"]%>>
+    <input type="datetime-local" name="Von" value='<%context["Von"]%>'>
     <lable>Bis</lable>
-    <input type="datetime-local" name="Bis" value=<%context["Bis"]%>>
+    <input type="datetime-local" name="Bis" value='<%context["Bis"]%>'>
     <label>Wer</label>
     <select name="userID" id="userID">
         options
@@ -11,6 +11,7 @@
     <input type="text" name="Ort" value=<%context["Ort"]%>>
     <label>Type</label>
     <input type="text" name="Type" value=<%context["Type"]%>>
+    <input type="hidden" value='<%context["Vnr"]%>' name="Vnr">
 </form>
 
-<button data-action="send" id=0>Confirm</button>
+<button data-action="send" id='<%context["Vnr"]%>'>Confirm</button>

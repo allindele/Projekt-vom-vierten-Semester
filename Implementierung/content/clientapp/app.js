@@ -97,7 +97,7 @@ class Application {
                         this.einsatzplan.renderList();
                         break;
                     case "einsatzplan.detail":
-                        this.einsatzplan.renderDetail();
+                        this.einsatzplan.renderDetail(data[1]);
                         break;
                     default:
                         console.log("message \"" + data[0] + "\" unknown")
