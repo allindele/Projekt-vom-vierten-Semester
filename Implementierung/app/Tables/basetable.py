@@ -187,25 +187,23 @@ class baseTable_cl():
     def getUpdateString(data):
         return "Where `ID`=0"
 
-class Fachbereich_cl(baseTable_cl):
+class User_cl(baseTable_cl):
     def __init__(self):
-        super().__init__("Item_db")
+        super().__init__("user")
 
     def combineData(self,items,columns,skip=0):
         result = {}
        
         for x in items:
             result[x[0]] = {
-                "Wert":x[1],
-                "Anz2LE":x[2],
-                "Quality":x[3],
-                "Discription":x[4],
-                "Standart":x[6]
+                columns[1][0]:x[1],
+                columns[2][0]:x[2],
+                columns[3][0]:x[3],
             }
         return result
     
     def getUpdateString(self,data):
-        return "Where `Name`='"+data["Name"]+"'"
+        return "Where `Unr`='"+data["Unr"]+"'"
         
 class Veranstaltung_cl(baseTable_cl):
     def __init__(self):
@@ -258,7 +256,8 @@ class Einsatzplan_cl(baseTable_cl):
                 columns[2][0]:x[2],
                 columns[3][0]:x[3],
                 columns[4][0]:x[4],
-                columns[5][0]:x[5]
+                columns[5][0]:x[5],
+                columns[6][0]:x[6]
             }
         return result
     

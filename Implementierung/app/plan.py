@@ -19,7 +19,7 @@ class plan_Cl(object):
       self.db = database
 
    #-------------------------------------------------------
-   def GET(self,cmd="",arg1=""):
+   def GET(self,cmd="",arg1="",arg2="",arg3="",arg4=""):
    #-------------------------------------------------------
 
       if not self.usermanager.userAuthenticated():
@@ -31,8 +31,10 @@ class plan_Cl(object):
                pass
             else:
                data = self.db.getData(DB_Table.Einsatzplan,arg1)
-         elif(cmd=="getPersonal"):
-            data = self.getAvailablePersonal()
+         elif(cmd=="getPersonal" and len(arg1)>0 and len(arg2)>0):
+            arg1 = datetime.strptime(arg1,"%Y-%m-%dT%H:%M")
+            arg2 = datetime.strptime(arg2,"%Y-%m-%dT%H:%M")
+            data = self.getAvailablePersonal(arg1,arg2,arg3)
          else:
             data = self.getEinsatzplan(1)
       else:
@@ -66,20 +68,39 @@ class plan_Cl(object):
          raise cherrypy.HTTPError(401)
       # delete termin
       
-   def getAvailablePersonal(self):
-      return
+   def getAvailablePersonal(self,startTime,endTime,location):
+      arbeiter = self.db.searchData(DB_Table.User,"`Rolle`='Arbeiter'")
+      veranstaltungen = self.getEinsatzplanCurrentWeek()
+
+      for k,v in veranstaltungen.items():
+         if (v["Von"].day != startTime.day)and (v["Von"].month != startTime.month) and (v["Von"].year != startTime.year): 
+            continue
+         if v["userID"] not in arbeiter:
+            continue
+         extraTime = 0
+         if location != v["Ort"]:
+            extraTime += 2
+         if (endTime.hour < v["Von"].hour - extraTime):
+            continue
+         elif (startTime.hour > v["Bis"].hour + extraTime):
+            continue
+         del(arbeiter[v["userID"]])
+      return arbeiter
    
    Weekday = {0:"Mo",1:"Di",2:"Mi",3:"Do",4:"Di",5:"Fr",6:"Sa",7:"So"}
 
-   def getEinsatzplan(self,custom):
-      result = {"Mo":{},"Di":{},"Mi":{},"Do":{},"Fr":{}}
+   def getEinsatzplanCurrentWeek(self):
       t = datetime.today().weekday()
       weekstart = datetime.today() + timedelta(days=-t)
       weekend = datetime.today() + timedelta(days=6-t)
-      datetime.hour
       data  = self.db.searchData(DB_Table.Einsatzplan,"`Von`>='"+str(weekstart)+"' AND `Von` <='"+str(weekend)+"'")
-      
-      for v in data.values():
+      return data
+   
+   def getEinsatzplan(self,custom):
+      result = {"Mo":{},"Di":{},"Mi":{},"Do":{},"Fr":{}}
+      data  = self.getEinsatzplanCurrentWeek()
+
+      for k,v in data.items():
          flag = False
          c = 1
          while not flag:
@@ -89,7 +110,7 @@ class plan_Cl(object):
                c+=1
                continue
             else:
-               result[self.Weekday[v["Von"].weekday()]][c][v["Von"].hour] = {"Bis":v["Bis"].hour,"Ort":v["Ort"]}
+               result[self.Weekday[v["Von"].weekday()]][c][v["Von"].hour] = {"Bis":v["Bis"].hour,"Ort":v["Ort"],"Type":v["Type"],"Name":v["Name"],"Vnr":k} 
                flag = True
 
       tmp = result # Ausgabe Sortieren

@@ -20,12 +20,18 @@ class einsatzplan_cl{
         let path = "/plan/list";
         this.requester.GET_px(path).then(result => {
             let data = JSON.parse(result);
-            this.doRenderDetail(this.krankmeldungList, data);
+            this.doRenderList(this.krankmeldungList, data);
             this.createTable(data)
         });
     }
 
     doRenderDetail (template, data) {
+        if (this.doRender(template, data)) {
+           this.configFormButtonEvents();
+           this.onchangeTrigger();
+        }
+    }
+    doRenderList (template, data) {
         if (this.doRender(template, data)) {
            this.configFormButtonEvents();
         }
@@ -39,6 +45,12 @@ class einsatzplan_cl{
            return true;
         }
         return false;
+    }
+
+    onchangeTrigger(){
+        document.getElementsByName("Ort")[0].addEventListener("change",this.dozentChange)
+        document.getElementsByName("Von")[0].addEventListener("change",this.dozentChange)
+        document.getElementsByName("Bis")[0].addEventListener("change",this.dozentChange)
     }
 
     configFormButtonEvents() {
@@ -119,9 +131,11 @@ class einsatzplan_cl{
                     }
                 }
                     t = document.createElement("td")
+                    let dat = data[tag][entry][inhalt]
                     t.colSpan = data[tag][entry][inhalt]["Bis"] - inhalt
                     time = data[tag][entry][inhalt]["Bis"]
-                    t.innerHTML = "Test Vorlesung"
+                    t.innerHTML = data[tag][entry][inhalt]["Type"]
+                    t.id = dat["Vnr"]
                     row.append(t)
             }    
         for(let i = time;i<20;i++){
@@ -134,5 +148,30 @@ class einsatzplan_cl{
             
         }
         return row
+    }
+
+    dozentChange(){
+        var start = document.getElementById("start");        
+        let path = "plan/getPersonal/"
+        path += document.getElementsByName("Von")[0].value+"/"
+        path +=document.getElementsByName("Bis")[0].value+"/"
+        path+=document.getElementsByName("Ort")[0].value
+        APP.instance.requester.GET_px(path).then(result =>{
+            let data = JSON.parse(result)
+            let end = document.getElementById("userID")
+
+
+            var length = end.options.length;
+            for (let i = length-1; i >= 0; i--) {
+            end.options[i] = null;
+            }
+
+            for (var key in data){
+                var option = document.createElement("option");
+                option.text = data[key]["Nachname"];
+                end.add(option);
+            } 
+
+        })
     }
 }

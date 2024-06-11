@@ -17,6 +17,7 @@ class DB_Table():
    Markt = "Markt",
    KrankMeldung = "krankmeldung"
    Einsatzplan = "Veranstaltungen"
+   User = "User"
 
 
 dbconfig = {
@@ -42,6 +43,7 @@ class Database_cl(object):
       self.tables = {}
       self.tables[DB_Table.KrankMeldung] = KrankMeldung_cl()
       self.tables[DB_Table.Einsatzplan] = Einsatzplan_cl()
+      self.tables[DB_Table.User] = User_cl()
       baseTable_cl.database = self.database
 
 
