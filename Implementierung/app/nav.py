@@ -19,8 +19,6 @@ class Navbar_cl(object):
    def GET(self):
    #-------------------------------------------------------
         nav = [
-            ["home", "Startseite"],
-            ["krankmeldung.create","Test Krankmeldung Erstellen"],
             ["krankmeldung.list","Test Krankmeldung List"],
             ["einsatzplan.list","EPlan"],
             ["einsatzplan.detail","EDetail"]
@@ -29,8 +27,7 @@ class Navbar_cl(object):
         if(self.usermanager.userAuthenticated()):
             user = self.usermanager.getCurrentUserRole()
             if(user != "User"):
-                nav.append(["summary.ausgabe", "Ausgaben"])
-
+                pass
 
 
         #momentan manuell
