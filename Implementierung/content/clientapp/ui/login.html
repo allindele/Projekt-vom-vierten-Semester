@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        .align-center {
+            text-align: center;
+        }
+        .box-center {
+            display: flex;
+            justify-content: center; 
+            align-items: center;         
+        }
+        .flex-column {
+            flex-direction: column; 
+        }
+        .flex-row {
+            flex-direction: row; 
+        }
+        .mg-m {
+            margin: 0.8rem;
+        }
+        .mg-xl {
+            margin: 0.99rem;
+        }
+        .pd-m {
+            padding: 0.5rem;
+        }
+        .h-60 {
+            height: 60vh;
+        }
+        .w-60 {
+            width: 60vw;
+        }
+        .h-100 {
+            height: 100vh;
+        }
+        .w-100 {
+            width: 100vw;
+        }
+        .border-black {
+            border: 0.2rem solid black;
+        }
+        .bg-white {
+            background-color: white;
+        }
+        .border-blue {
+            border: 0.2rem solid rgb(28, 200, 212);
+        }
+        .border-gray {
+            border: 0.2rem solid rgb(158, 160, 160);
+        }
+        .box-space-around {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .d-btn-w {
+            width: 20vw;
+        }
+        .w-30 {
+            width: 30vw;
+        }
+        .d-btn-h {
+            height: fit-content;
+        }
+        .top-right-corner-pos {
+            position: absolute; /* Positions the element absolutely */
+            top: 0;             /* Positions the element at the top */
+            right: 0; 
+        }
+    </style>
+</head>
+<body>
+    <div class="top-right-corner-pos pd-m">Startseite > Login</div>
+    <div class="box-center flex-column h-100 w-100">
+        <h3 class="mg-m pd-m">Login</h3>
+        <div class="h-60 w-60 border-black box-space-around">
+            <form action="/submit-form" method="post">
+                <label for="username" class="pd-m">Username:</label><br>
+                <input type="text" class="border-black mg-m pd-m w-30" id="username" name="username" required><br><br>
+            
+                <label for="password" class="pd-m">Password:</label><br>
+                <input type="password" class="border-black mg-m pd-m w-30" id="password" name="password" required><br><br>
+            
+                <div class="box-center flex-row">
+                    <button class="bg-white pd-m mg-m border-blue" type="submit">Submit</button>
+                    <button class="bg-white pd-m mg-m border-gray" type="button" onclick="window.location.href='/cancel'">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
