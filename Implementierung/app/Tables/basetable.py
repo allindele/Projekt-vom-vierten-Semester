@@ -236,7 +236,8 @@ class KrankMeldung_cl(baseTable_cl):
             result[x[0]] = {
                 columns[1][0]:x[1],
                 columns[2][0]:x[2],
-                columns[3][0]:x[3]
+                columns[3][0]:x[3],
+                columns[4][0]:x[4]
             }
         return result
     

@@ -151,6 +151,9 @@ class einsatzplan_cl{
                     t.colSpan = data[tag][entry][inhalt]["Bis"] - inhalt
                     time = data[tag][entry][inhalt]["Bis"]
                     t.innerHTML = data[tag][entry][inhalt]["Type"] +" " + dat["Ort"]+" " +dat["Arbeiter"]
+                    if(dat["Krank"] >0){
+                        t.style = "background-color:red"
+                    }
                     t.id = dat["Vnr"]
                     t.addEventListener("click",(e)=>{
                         this.highlightRow(e,this)

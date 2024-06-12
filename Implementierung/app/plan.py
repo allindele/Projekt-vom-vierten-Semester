@@ -133,7 +133,12 @@ class plan_Cl(object):
                c+=1
                continue
             else:
-               result[self.Weekday[v["Von"].weekday()]][c][v["Von"].hour] = {"Bis":v["Bis"].hour,"Ort":v["Ort"],"Type":v["Type"],"Name":v["Name"],"Vnr":k,"Arbeiter":arbeiter[v["userID"]]["Nachname"]} 
+               result[self.Weekday[v["Von"].weekday()]][c][v["Von"].hour] = {"Bis":v["Bis"].hour,"Ort":v["Ort"],"Type":v["Type"],"Name":v["Name"],"Vnr":k,"Arbeiter":arbeiter[v["userID"]]["Nachname"],"Krank":0} 
+               for ve in krankmeldung.values():
+                  if(v["userID"]==ve["userID"] and(v["Von"].day >= ve["Von"].day and v["Von"].day <= ve["Bis"].day) 
+                  and (v["Von"].month >= ve["Von"].month and v["Von"].month <= ve["Bis"].month)
+                  and(v["Von"].year >= ve["Von"].year and v["Von"].year <= ve["Bis"].year)):
+                     result[self.Weekday[v["Von"].weekday()]][c][v["Von"].hour]["Krank"] = 1
                flag = True
 
       tmp = result # Ausgabe Sortieren
