@@ -116,7 +116,7 @@ class plan_Cl(object):
       return data
    
    def getEinsatzplan(self,custom:int=0):
-      result = {"Mo":{},"Di":{},"Mi":{},"Do":{},"Fr":{}}
+      result = {"Mo":{},"Di":{},"Mi":{},"Do":{},"Fr":{},"Sa":{},"So":{}}
       data  = self.getEinsatzplanCurrentWeek()
       arbeiter = self.db.getData(DB_Table.User)
       ### Krankmeldung in derm Plan als rote farbe anzeigen
