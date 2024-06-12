@@ -93,7 +93,8 @@ class plan_Cl(object):
          if ((v["Von"].day <= startTime.day)and (v["Von"].month <= startTime.month) and (v["Von"].year <= startTime.year)and
              (v["Bis"].day <= startTime.day)and (v["Bis"].month <= startTime.month) and (v["Bis"].year <= startTime.year)
              ):
-            del(arbeiter[v["userID"]])
+            if v["userID"] in arbeiter:
+               del(arbeiter[v["userID"]])
       return arbeiter
    
    Weekday = {0:"Mo",1:"Di",2:"Mi",3:"Do",4:"Di",5:"Fr",6:"Sa",7:"So"}
