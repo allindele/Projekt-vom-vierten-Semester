@@ -78,9 +78,11 @@ class krankmelder_cl{
             this.requester.PUT_px("krankmeldung/create",jsonStr);
             //this.krankmelder.renderList();
         }
-        if(cmd == "back"){
-            //display navigation page
+        if(cmd == "main"){
+            APP.instance.changeView("app.cmd",["mainsite"])
+
         }
+
     }
 
     getFormDataAsJson(form) {

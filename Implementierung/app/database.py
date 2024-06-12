@@ -53,9 +53,9 @@ class Database_cl(object):
       self.database = mysql.connector.connect(**dbconfig)
       return
 
-   def getData(self,table,id = None,skip = False):
+   def getData(self,table,querySelector="*",id = None,skip = False):
       #try:
-         data = self.tables[table].getData(skip)
+         data = self.tables[table].getData(querySelector,skip)
          return data
       #except:
        #  return 0#cherrypy.HTTPError(500,"Data not found")

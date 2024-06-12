@@ -38,7 +38,7 @@ class plan_Cl(object):
             data = self.getAvailablePersonal(arg1,arg2,arg3)
          else:
             data = self.getEinsatzplan(0)
-            data["extra"] = '<button data-action="edit">Edit</button>'
+            data["extra"] = '<button data-action="edit">Edit</button><button data-action="create">Veranstaltung erstellen</button>'
 
       else:
          data =self.getEinsatzplan(int(self.usermanager.getUserID()))
@@ -108,7 +108,7 @@ class plan_Cl(object):
    def getEinsatzplan(self,custom:int):
       result = {"Mo":{},"Di":{},"Mi":{},"Do":{},"Fr":{}}
       data  = self.getEinsatzplanCurrentWeek()
-
+      arbeiter = self.db.getData(DB_Table.User)
       for k,v in data.items():
          if custom != 0 and v["userID"] !=  custom:
             continue
@@ -121,7 +121,7 @@ class plan_Cl(object):
                c+=1
                continue
             else:
-               result[self.Weekday[v["Von"].weekday()]][c][v["Von"].hour] = {"Bis":v["Bis"].hour,"Ort":v["Ort"],"Type":v["Type"],"Name":v["Name"],"Vnr":k} 
+               result[self.Weekday[v["Von"].weekday()]][c][v["Von"].hour] = {"Bis":v["Bis"].hour,"Ort":v["Ort"],"Type":v["Type"],"Name":v["Name"],"Vnr":k,"Arbeiter":arbeiter[v["userID"]]["Nachname"]} 
                flag = True
 
       tmp = result # Ausgabe Sortieren

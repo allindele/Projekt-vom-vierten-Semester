@@ -2,13 +2,11 @@
 
 class Application {
     constructor() {
-        this.sideBar = new SideBar("nav");
         this.loginView = new LogInView("main");
-        this.projekteView = new Projekte("main");
-        this.header = new headerClass("header")
         this.requester = new Requester_cl();
         this.krankmelder = new krankmelder_cl("main")
         this.einsatzplan = new einsatzplan_cl("main")
+        this.mainsite = new mainsite_cl("main")
     }
 
     run(){
@@ -32,18 +30,7 @@ class Application {
                 break;
 
             case "login.done":
-                this.header.renderData()
-
-                this.requester.GET_px("/navbar").then(result => {
-                    let data = JSON.parse(result);
-                    this.sideBar.render(data);
-                });
-
-                let markup = APP.tm.renderTemplate("home.tpl.html", null);
-                let el = document.querySelector("main");
-                if (el != null) {
-                    el.innerHTML = markup;
-                }
+                this.changeView("app.cmd",["mainsite"])
                 break;
 
             case "app.cmd":
@@ -63,30 +50,6 @@ class Application {
                             el.innerHTML = markup;
                         }
                         break;
-                    case "projects":
-                        this.projekteView.renderList();
-                        break;
-
-                    case "projects.new":
-                        this.projekteView.renderDetail();
-                        break;
-
-                    case "projects.detail":
-                        this.projekteView.renderDetail(data[1]);
-                        break;
-                    case "projects.database":
-                        this.projekteView.renderList();
-                        break;
-                    
-                    case "users":
-                        this.userView.renderList();
-                        break;
-                    case "users.new":
-                        this.userView.renderDetail();
-                        break;
-                    case "users.detail":
-                        this.userView.renderDetail(data[1]['id'], data[1]['role']);
-                        break;
                     case "krankmeldung.create":
                         this.krankmelder.renderDetail();
                         break;
@@ -98,6 +61,9 @@ class Application {
                         break;
                     case "einsatzplan.detail":
                         this.einsatzplan.renderDetail(data[1]);
+                        break;
+                    case "mainsite":
+                        this.mainsite.renderView()
                         break;
                     default:
                         console.log("message \"" + data[0] + "\" unknown")

@@ -51,14 +51,14 @@ class baseTable_cl():
         return result
 
 
-    def getData(self,skip = False):  #missing json resolver
+    def getData(self,querySelector="*",skip = False):  #missing json resolver
         
         connection = mysql.connector.connect(**dbconfig)
         #connection = baseTable_cl.connectionPool.get_connection()
         mycursor = connection.cursor()
         #mycursor = baseTable_cl.database.cursor()
 
-        mycursor.execute("SELECT * FROM "+self.table)
+        mycursor.execute("SELECT "+querySelector+" FROM "+self.table)
         items = mycursor.fetchall()
         connection.commit()
         mycursor.close()

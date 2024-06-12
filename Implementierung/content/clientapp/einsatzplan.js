@@ -90,13 +90,20 @@ class einsatzplan_cl{
             let form = document.forms["einsatplan-form"];
             let jsonStr = that.getFormDataAsJson(form);
             this.requester.PUT_px("plan/create/"+event.target.id,jsonStr);
-            //this.krankmelder.renderList();
+            this.renderList()
         }
         if(cmd == "back"){
-            //display navigation page
+            this.renderList()
+        }
+        if(cmd == "main"){
+            APP.instance.changeView("app.cmd",["mainsite"])
+
         }
         if(cmd == "edit" && this.prevElem != undefined){
              APP.instance.changeView("app.cmd",["einsatzplan.detail",this.prevElem.id])
+        }
+        if(cmd =="create"){
+            this.renderDetail(0)
         }
     }
 
@@ -143,7 +150,7 @@ class einsatzplan_cl{
                     let dat = data[tag][entry][inhalt]
                     t.colSpan = data[tag][entry][inhalt]["Bis"] - inhalt
                     time = data[tag][entry][inhalt]["Bis"]
-                    t.innerHTML = data[tag][entry][inhalt]["Type"]
+                    t.innerHTML = data[tag][entry][inhalt]["Type"] +" " + dat["Ort"]+" " +dat["Arbeiter"]
                     t.id = dat["Vnr"]
                     t.addEventListener("click",(e)=>{
                         this.highlightRow(e,this)
