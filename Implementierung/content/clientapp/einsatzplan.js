@@ -191,6 +191,7 @@ class einsatzplan_cl{
             for (var key in data){
                 var option = document.createElement("option");
                 option.text = data[key]["Nachname"];
+                option.value = key
                 end.add(option);
             } 
 
