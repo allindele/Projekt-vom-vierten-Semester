@@ -7,7 +7,6 @@ import cherrypy
 from app import application, template, login,krankmeldung,plan,mainsite
 from app import database
 
-from app import nav
 from app.usermanager import UserManager_cl
 
 

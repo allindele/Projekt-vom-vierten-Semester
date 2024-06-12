@@ -104,11 +104,23 @@ class plan_Cl(object):
       weekend = datetime.today() + timedelta(days=6-t)
       data  = self.db.searchData(DB_Table.Einsatzplan,"`Von`>='"+str(weekstart)+"' AND `Von` <='"+str(weekend)+"'")
       return data
+   def getKrankmeldungCurrentWeek(self,custom:int = 0):
+      t = datetime.today().weekday()
+      weekstart = datetime.today() + timedelta(days=-(t+1))
+      weekend = datetime.today() + timedelta(days=6-t)
+      if custom >0:
+         data  = self.db.searchData(DB_Table.KrankMeldung,"`Von`>='"+str(weekstart)+"' AND `Von` <='"+str(weekend)+"' AND `userID`='"+str(custom)+"'")
+      else:
+         data  = self.db.searchData(DB_Table.KrankMeldung,"`Von`>='"+str(weekstart)+"' AND `Von` <='"+str(weekend)+"'")
+      return data
    
-   def getEinsatzplan(self,custom:int):
+   def getEinsatzplan(self,custom:int=0):
       result = {"Mo":{},"Di":{},"Mi":{},"Do":{},"Fr":{}}
       data  = self.getEinsatzplanCurrentWeek()
       arbeiter = self.db.getData(DB_Table.User)
+      ### Krankmeldung in derm Plan als rote farbe anzeigen
+      krankmeldung = self.getKrankmeldungCurrentWeek(custom)
+      ###
       for k,v in data.items():
          if custom != 0 and v["userID"] !=  custom:
             continue

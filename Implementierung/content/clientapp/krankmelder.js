@@ -75,8 +75,8 @@ class krankmelder_cl{
         if(cmd == "send"){
             let form = document.forms["krankmeldung-form"];
             let jsonStr = that.getFormDataAsJson(form);
-            this.requester.PUT_px("krankmeldung/create",jsonStr);
-            //this.krankmelder.renderList();
+            this.requester.PUT_px("krankmeldung/create",jsonStr).then(()=>{APP.instance.changeView("app.cmd",["mainsite"])});
+            
         }
         if(cmd == "main"){
             APP.instance.changeView("app.cmd",["mainsite"])
