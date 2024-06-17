@@ -1,19 +1,32 @@
-<table>
-    <tr>
-        <td>Name</td>
-        <td>Grund</td>
-        <td>Datum</td>
-        <td>Action</td>
-    </tr>
-    <% for(var key in context){%>
-        <tr id = <%key%>>
-            <td><%context[key]["name"]%></td>
-            <td> <% context[key]["Grund"] %></td>
-            <td> Von: <% context[key]["Von"] %><br>
-                Bis: <% context[key]["Bis"] %></td>
-            <td><button data-action="reject" id = <%key%>>Ablehnen</button></td>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="image.jpg" type="image/jpeg">
+    <link rel="stylesheet" type="text/css" href="krankmeldungListstyle.css">
+    <title>Anmeldeformular</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Grund</td>
+            <td>Datum</td>
+            <td>Action</td>
         </tr>
-    <%}%>
-</table>
-
-<button data-action="main">Zurück</button>
+        <% for(var key in context){%>
+            <tr id = <%key%>>
+                <td><%context[key]["name"]%></td>
+                <td> <% context[key]["Grund"] %></td>
+                <td> Von: <% context[key]["Von"] %><br>
+                    Bis: <% context[key]["Bis"] %></td>
+                <td><button data-action="reject" id = <%key%>>Ablehnen</button></td>
+            </tr>
+        <%}%>
+    </table>
+    
+    <button data-action="main">Zurück</button>
+    
+</body>
+</html>

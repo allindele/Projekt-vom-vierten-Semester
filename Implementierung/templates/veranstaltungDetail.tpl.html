@@ -1,18 +1,36 @@
-<form id="einsatplan-form">
-    <lable>Von</lable>
-    <input type="datetime-local" name="Von" value='<%context["Von"]%>'>
-    <lable>Bis</lable>
-    <input type="datetime-local" name="Bis" value='<%context["Bis"]%>'>
-    <label>Wer</label>
-    <select name="userID" id="userID">
-        options
-    </select>
-    <label>Ort</label>
-    <input type="text" name="Ort" value=<%context["Ort"]%>>
-    <label>Type</label>
-    <input type="text" name="Type" value=<%context["Type"]%>>
-    <input type="hidden" value='<%context["Vnr"]%>' name="Vnr" id="vnr">
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="image.jpg" type="image/jpeg">
+    <link rel="stylesheet" type="text/css" href="veranstaltungsDetailstyle.css">
+    <title>Anmeldeformular</title>
+</head>
+<body>
+    <img src="mainimage.jpg" class="logo" alt="Foto nicht gefunden" title="Logo des Internats" width="125" height="125" />
+    <form action ="#" method="post" target="_self">
+        <hr>
 
-<button data-action="send" id='<%context["Vnr"]%>'>Confirm</button>
-<button data-action="back">Zurück</button>
+        <label>Von</label>
+        <input type="datetime-local" name="Von" value='<%context["Von"]%>'>
+        <label>Bis</label>
+        <input type="datetime-local" name="Bis" value='<%context["Bis"]%>'>
+        <label>Wer</label>
+        <select name="userID" id="userID">
+        options
+        </select>
+        <label>Ort</label>
+        <input type="text" name="Ort" value=<%context["Ort"]%>>
+        <label>Type</label>
+        <input type="text" name="Type" value=<%context["Type"]%>>
+        <input type="hidden" value='<%context["Vnr"]%>' name="Vnr" id="vnr">
+
+
+        <button data-action="send" id='<%context["Vnr"]%>' type="vorne">Confirm</button>
+        <button data-action="back" type="hinten">Zurück</button>
+    </form>
+
+    
+</body>
+</html>

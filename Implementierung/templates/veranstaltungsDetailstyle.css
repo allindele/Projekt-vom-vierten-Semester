@@ -12,17 +12,10 @@ body {
     justify-content: center;
     height:115vh;
 }
-    .logo {
-        position: absolute;
-        top: 10%;
-        left: 44%;
-    }
-hr {
-    margin: 10px 0;
-    background-color: white;
-    border: 0;
-    height: 1px;
-    width: 100%;
+.logo {
+    position: absolute;
+    top: 0.8%;
+    left: 45%;
 }
 form {
     display: flex;
@@ -32,7 +25,13 @@ form {
     border-radius: 6px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-
+hr {
+    margin: 10px 0;
+    background-color: white;
+    border: 0;
+    height: 1px;
+    width: 100%;
+}
 label {
     margin-bottom: 6px;
 }
@@ -45,16 +44,16 @@ input {
 input:focus {
 border: 1px solid #17a2b8;
 }
-input[type = "submit"] {
-margin-top: 15px;
+button[type = "vorne"] {
+    margin-top: 15px;
 background-color: #17a2b8;
 color: white;
 border: 1px solid #17a2b8;
 cursor: pointer;
 }
-input[type = "cancel"] {
+button[type = "hinten"] {
     margin-top: 15px;
-    padding-left: 90px;
+    padding-left: 5px;
     background-color: #17a2b8;
     color: white;
     border: 1px solid #17a2b8;

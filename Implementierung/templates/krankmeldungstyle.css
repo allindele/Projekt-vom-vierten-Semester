@@ -18,7 +18,7 @@ hr {
     width: 100%;
 }
 body {
-    background-image: url(Hintergrund.jpg);
+    background-image: url(ressource.jpeg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,7 +46,7 @@ border: 1px solid #17a2b8;
 }
 input[type = "submit"] {
 margin-top: 15px;
-background-color: #1e02d6;
+background-color: #17a2b8;
 color: white;
 border: 1px solid #17a2b8;
 cursor: pointer;
@@ -54,7 +54,7 @@ cursor: pointer;
 input[type = "back"] {
     margin-top: 15px;
     padding-left: 120px;
-    background-color: #1e02d6;
+    background-color: #17a2b8;
     color: white;
     border: 1px solid #17a2b8;
     cursor: pointer;
