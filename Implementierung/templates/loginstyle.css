@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;1,100;1,200;1,300&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    background-image: url(ressource.jpeg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:115vh;
+}
+    .logo {
+        position: absolute;
+        top: 10%;
+        left: 44%;
+    }
+hr {
+    margin: 10px 0;
+    background-color: white;
+    border: 0;
+    height: 1px;
+    width: 100%;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+label {
+    margin-bottom: 6px;
+}
+input {
+    margin-bottom: 5px;
+    padding: 5px;
+    outline: 0;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+}
+input:focus {
+border: 1px solid #17a2b8;
+}
+input[type = "submit"] {
+margin-top: 15px;
+background-color: #17a2b8;
+color: white;
+border: 1px solid #17a2b8;
+cursor: pointer;
+}
+input[type = "cancel"] {
+    margin-top: 15px;
+    padding-left: 90px;
+    background-color: #17a2b8;
+    color: white;
+    border: 1px solid #17a2b8;
+    cursor: pointer;
+}

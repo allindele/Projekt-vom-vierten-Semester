@@ -1,12 +1,26 @@
-Hier müsste ein Form sein zum ausfüllen
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="image.jpg" type="image/jpeg">
+    <link rel="stylesheet" type="text/css" href="krankmeldungstyle.css">
+    <title>Anmeldeformular</title>
+</head>
+<body>
+    <img src="mainimage.jpg" class="logo" alt="Foto nicht gefunden" title="Logo des Internats" width="125" height="125" />
+    <form action ="#" method="post" target="_self">
+        <hr>
+        <label>Grund: </label>
+        <input name="Grund" type="text"><br>
+        <label>Von: </label>
+        <input name="Von" type="date"> <br>
+        <label>Bis: </label>
+        <input name="Bis" type="date"> <br>
 
-<form id="krankmeldung-form">
-    <label>Grund: </label>
-    <input name="Grund" type="text"><br>
-    <label>Von: </label>
-    <input name="Von" type="date"> <br>
-    <label>Bis: </label>
-    <input name="Bis" type="date"> <br>
-</form>
-<button data-action="send">Send Form</button>
-<button data-action="main">Zurück</button>
+        <input type ="submit" value="senden">
+        <input type ="back" value="Zurück">
+    </form>
+
+</body>
+</html>
