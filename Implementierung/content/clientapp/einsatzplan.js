@@ -36,6 +36,7 @@ class einsatzplan_cl{
         if (this.doRender(template, data)) {
            this.configFormButtonEvents();
            this.onchangeTrigger();
+           this.dozentChange();
         }
     }
     doRenderList (template, data) {
@@ -82,17 +83,16 @@ class einsatzplan_cl{
         }
 
         if(cmd == "reject"){
-            this.requester.DELETE_px("krankmeldung/reject/"+event.target.id)
-            this.renderList();
-
+            this.requester.DELETE_px("krankmeldung/reject/"+event.target.id).then(()=>{this.renderList()})
         }
         if(cmd == "send"){
             let form = document.forms["einsatplan-form"];
             let jsonStr = that.getFormDataAsJson(form);
-            this.requester.PUT_px("plan/create/"+event.target.id,jsonStr);
-            this.renderList()
+            this.requester.PUT_px("plan/create/"+event.target.id,jsonStr).then(()=>{this.renderList()});
+            
         }
         if(cmd == "back"){
+            this.prevElem = undefined
             this.renderList()
         }
         if(cmd == "main"){
@@ -103,6 +103,7 @@ class einsatzplan_cl{
              APP.instance.changeView("app.cmd",["einsatzplan.detail",this.prevElem.id])
         }
         if(cmd =="create"){
+            this.prevElem = undefined
             this.renderDetail(0)
         }
     }
@@ -177,7 +178,8 @@ class einsatzplan_cl{
         let path = "plan/getPersonal/"
         path += document.getElementsByName("Von")[0].value+"/"
         path +=document.getElementsByName("Bis")[0].value+"/"
-        path+=document.getElementsByName("Ort")[0].value
+        path+=document.getElementsByName("Ort")[0].value+"/"
+        path+=document.getElementById("vnr").value
         APP.instance.requester.GET_px(path).then(result =>{
             let data = JSON.parse(result)
             let end = document.getElementById("userID")

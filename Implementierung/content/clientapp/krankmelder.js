@@ -68,9 +68,7 @@ class krankmelder_cl{
         }
 
         if(cmd == "reject"){
-            this.requester.DELETE_px("krankmeldung/reject/"+event.target.id)
-            this.renderList();
-
+            this.requester.DELETE_px("krankmeldung/reject/"+event.target.id).then(()=>{this.renderList()})
         }
         if(cmd == "send"){
             let form = document.forms["krankmeldung-form"];

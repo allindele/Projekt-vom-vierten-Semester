@@ -112,7 +112,7 @@ a:focus{
 }
 
 .selected {
-   background-color: grey;
+   background-color: rgba(88, 165, 228, 0.616);
 }
 
 /* Filter area styling */

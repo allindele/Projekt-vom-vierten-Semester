@@ -35,10 +35,10 @@ class plan_Cl(object):
          elif(cmd=="getPersonal" and len(arg1)>0 and len(arg2)>0):
             arg1 = datetime.strptime(arg1,"%Y-%m-%dT%H:%M")
             arg2 = datetime.strptime(arg2,"%Y-%m-%dT%H:%M")
-            data = self.getAvailablePersonal(arg1,arg2,arg3)
+            data = self.getAvailablePersonal(arg1,arg2,arg3,Voredit=int(arg4))
          else:
             data = self.getEinsatzplan(0)
-            data["extra"] = '<button data-action="edit">Edit</button><button data-action="create">Veranstaltung erstellen</button>'
+            data["extra"] = '<button data-action="edit">Edit</button>'+'<button data-action="create">Veranstaltung erstellen</button>'+'<button data-action="print">Plan ausdrucken</button>'
 
       else:
          data =self.getEinsatzplan(int(self.usermanager.getUserID()))
@@ -71,16 +71,28 @@ class plan_Cl(object):
          raise cherrypy.HTTPError(401)
       # delete termin
       
-   def getAvailablePersonal(self,startTime,endTime,location):
+   def getAvailablePersonal(self,startTime,endTime,location,Voredit = 0):
       arbeiter = self.db.searchData(DB_Table.User,"`Rolle`='Arbeiter'")
+      for v in arbeiter.values():
+         v["Arbeitszeit"] = 0
       krankmeldungen = self.db.getData(DB_Table.KrankMeldung)
       veranstaltungen = self.getEinsatzplanCurrentWeek()
+      timeNeed = abs(endTime.hour - startTime.hour)
 
-      for v in veranstaltungen.values():
-         if (v["Von"].day != startTime.day)or (v["Von"].month != startTime.month) or (v["Von"].year != startTime.year): 
+      for k,v in veranstaltungen.items():
+         if (v["Von"].month != startTime.month) or (v["Von"].year != startTime.year) or k == Voredit: 
+            continue
+         arbeiter[v["userID"]]["Arbeitszeit"] += abs(v["Bis"].hour-v["Von"].hour)
+         if arbeiter[v["userID"]]["Arbeitszeit"] + timeNeed > 16:
+            del(arbeiter[v["userID"]])
+            continue 
+
+      for k,v in veranstaltungen.items():
+         if (v["Von"].day != startTime.day)or (v["Von"].month != startTime.month) or (v["Von"].year != startTime.year) or k == Voredit:
             continue
          if v["userID"] not in arbeiter:
             continue
+         
          extraTime = 0
          if location != v["Ort"]:
             extraTime += 2
@@ -123,24 +135,27 @@ class plan_Cl(object):
       krankmeldung = self.getKrankmeldungCurrentWeek(custom)
       ###
       for k,v in data.items():
-         if custom != 0 and v["userID"] !=  custom:
+         if (custom != 0 and v["userID"] !=  custom) or v["userID"] == 0:
             continue
          flag = False
          c = 1
          while not flag:
             if c not in result[self.Weekday[v["Von"].weekday()]]:
                result[self.Weekday[v["Von"].weekday()]][c] = {}
-            if v["Von"].hour in result[self.Weekday[v["Von"].weekday()]][c]:
-               c+=1
-               continue
-            else:
-               result[self.Weekday[v["Von"].weekday()]][c][v["Von"].hour] = {"Bis":v["Bis"].hour,"Ort":v["Ort"],"Type":v["Type"],"Name":v["Name"],"Vnr":k,"Arbeiter":arbeiter[v["userID"]]["Nachname"],"Krank":0} 
-               for ve in krankmeldung.values():
-                  if(v["userID"]==ve["userID"] and(v["Von"].day >= ve["Von"].day and v["Von"].day <= ve["Bis"].day) 
-                  and (v["Von"].month >= ve["Von"].month and v["Von"].month <= ve["Bis"].month)
-                  and(v["Von"].year >= ve["Von"].year and v["Von"].year <= ve["Bis"].year)):
-                     result[self.Weekday[v["Von"].weekday()]][c][v["Von"].hour]["Krank"] = 1
-               flag = True
+            flag2 = True
+            for ke,ve in result[self.Weekday[v["Von"].weekday()]][c].items():
+               # 
+               if (v["Von"].hour >= ke and v["Von"].hour <= ve["Bis"]) or (v["Bis"].hour <= ve["Bis"] and v["Bis"].hour >= ke) or (v["Von"].hour <= ke and v["Bis"].hour >= ve["Bis"]):
+                  c+=1
+                  flag2 = False
+            if not flag2: continue
+            result[self.Weekday[v["Von"].weekday()]][c][v["Von"].hour] = {"Bis":v["Bis"].hour,"Ort":v["Ort"],"Type":v["Type"],"Name":v["Name"],"Vnr":k,"Arbeiter":arbeiter[v["userID"]]["Nachname"],"Krank":0} 
+            for ve in krankmeldung.values():
+               if(v["userID"]==ve["userID"] and(v["Von"].day >= ve["Von"].day and v["Von"].day <= ve["Bis"].day) 
+               and (v["Von"].month >= ve["Von"].month and v["Von"].month <= ve["Bis"].month)
+               and(v["Von"].year >= ve["Von"].year and v["Von"].year <= ve["Bis"].year)):
+                  result[self.Weekday[v["Von"].weekday()]][c][v["Von"].hour]["Krank"] = 1
+            flag = True
 
       tmp = result # Ausgabe Sortieren
       for k,v in result.items():
