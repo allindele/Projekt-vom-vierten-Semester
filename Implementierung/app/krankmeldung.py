@@ -24,6 +24,10 @@ class Krankmeldung_cl(object):
       if not self.usermanager.userAuthenticated():
          raise cherrypy.HTTPError(401)
       data = self.db.getData(DB_Table.KrankMeldung)
+      user = self.db.getData(DB_Table.User)
+      for v in data.values():
+         v["name"] = user[v["userID"]]["Vorname"] + " " + user[v["userID"]]["Nachname"]
+
       return json.dumps(data,ensure_ascii=False,default=str)
 
    def PUT(self,cmd=""):
