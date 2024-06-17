@@ -6,7 +6,7 @@
     font-family: 'Poppins', sans-serif;
 }
 body {
-    background-image: url(Hntergrund.jpg);
+    background-image: url(ressource.jpeg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,4 +19,37 @@ form {
     padding: 10px;
     border-radius: 6px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+th {
+    background-color: #f2f2f2;
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+tr:hover {
+    background-color: #ddd;
+}
+button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
 }
